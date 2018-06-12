@@ -1,13 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import Signin from './Signin';
 import registerServiceWorker from './registerServiceWorker';
 import * as firebase from 'firebase';
 
-/* Enter Your Firebase Config Object Here */
-
+var config = {
+    apiKey: "AIzaSyD7Y2oLIXZFHgdGZHT8Wzq31_qRFH_Tejw",
+    authDomain: "test-react-app-58566.firebaseapp.com",
+    databaseURL: "https://test-react-app-58566.firebaseio.com",
+    projectId: "test-react-app-58566",
+    storageBucket: "test-react-app-58566.appspot.com",
+    messagingSenderId: "304819993239"
+  };
 firebase.initializeApp(config);
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<Signin />, document.getElementById('root'));
 registerServiceWorker();

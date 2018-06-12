@@ -34,7 +34,7 @@ class Signup extends Component {
   render() {
 
     return (
-      <div>
+      <div className = 'background-container'>
         <div className = 'container'>
           <form>
 

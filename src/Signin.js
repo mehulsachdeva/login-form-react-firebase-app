@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import './Signin.css';
+import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
+import Home from './Home';
+import Signup from './Signup';
 import * as firebase from 'firebase';
 
 class Signin extends Component {
@@ -22,9 +25,10 @@ class Signin extends Component {
     //**************** Signin ******************
     firebase.auth().signInWithEmailAndPassword(email, password).catch(function(err) {
       // Handle errors
+      if(err){
+        alert('Invalid credential');
+      }
     });
-
-    alert('Successfully Logined as ' + this.refs.email.value)
 
     //********* For Now Automatically SignOut **************
     firebase.auth().signOut()
@@ -35,8 +39,10 @@ class Signin extends Component {
 
   render() {
 
+    const SignUp = () => <Signup />
+
     return (
-      <div>
+      <div className = 'background-container'>
         <div className = 'container'>
           <form>
 
@@ -44,19 +50,26 @@ class Signin extends Component {
 
             <div className = 'sign-in-container'>
               <label>Email: </label><br />
-              <input type = 'email' placeholder = 'Username' ref = 'email' />
+              <input type = 'email' placeholder = 'Email' ref = 'email' />
 
               <label>Password: </label><br />
               <input type = 'password' placeholder = 'Password' ref = 'password' />
             </div>
 
-            <button onClick = {this.signIn}>SIGN UP</button>
+            <button onClick = {this.signIn}>SIGN IN</button>
           </form>
         </div>
         <div>
-          <div>{this.state.username}</div>
-          <div>{this.state.password}</div>
+          <Router>
+            <div className = 'link-to-signup-form'>
+              <Link to = "/signup">Not a member yet? Sign Up Now</Link>
+              <Switch>
+                <Route path = "/signup" component = {SignUp} />
+              </Switch>
+            </div>
+          </Router>
         </div>
+
       </div>
     );
   }

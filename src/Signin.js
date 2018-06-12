@@ -27,6 +27,8 @@ class Signin extends Component {
       // Handle errors
       if(err){
         alert('Invalid credential');
+      } else {
+        alert('Successfully Logined as ' + this.refs.email.value);
       }
     });
 

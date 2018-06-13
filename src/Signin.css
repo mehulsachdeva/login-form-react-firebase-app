@@ -64,7 +64,12 @@ button:hover {
 
 .link-to-signup-form {
   position: fixed;
-  margin-left: 550px;
+  margin-left: 555px;
   margin-top: 140px;
   text-decoration: none;
+}
+
+.link:hover {
+  text-decoration: none;
+  color: #2C3E50;
 }

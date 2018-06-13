@@ -11,7 +11,7 @@ class Signin extends Component {
   constructor(props){
     super(props);
     this.state = {
-      email: ''
+      auth: ''
     }
   }
 
@@ -23,17 +23,30 @@ class Signin extends Component {
     let password = this.refs.password.value
 
     //**************** Signin ******************
-    firebase.auth().signInWithEmailAndPassword(email, password).catch(function(err) {
+    firebase.auth().signInWithEmailAndPassword(email, password).catch((err) => {
       // Handle errors
       if(err){
-        alert('Invalid credential');
-      } else {
-        alert('Successfully Logined as ' + this.refs.email.value);
+        alert('Invalid credentials');
+        this.setState({
+          auth: null,
+        },() => {
+          console.log(this.state.auth)
+        })
       }
     });
 
-    //********* For Now Automatically SignOut **************
-    firebase.auth().signOut()
+    firebase.auth().onAuthStateChanged((user) => {
+      if(user){
+        alert('Successfully Logined as ' + this.state.auth)
+        this.setState({
+          auth: user.email,
+        },() => {
+          console.log(this.state.auth)
+        })
+      }
+      //********* For Now Automatically SignOut **************
+      firebase.auth().signOut()
+    });
 
     this.refs.email.value = ''
     this.refs.password.value = ''
@@ -64,7 +77,7 @@ class Signin extends Component {
         <div>
           <Router>
             <div className = 'link-to-signup-form'>
-              <Link to = "/signup">Not a member yet? Sign Up Now</Link>
+              <Link to = "/signup" style = {{textDecoration: 'none',color: '#2C3E50'}} className = 'link'>Not a member yet? Sign Up Now</Link>
               <Switch>
                 <Route path = "/signup" component = {SignUp} />
               </Switch>

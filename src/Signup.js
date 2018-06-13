@@ -53,10 +53,6 @@ class Signup extends Component {
             <button onClick = {this.signUp}>SIGN UP</button>
           </form>
         </div>
-        <div>
-          <div>{this.state.username}</div>
-          <div>{this.state.password}</div>
-        </div>
       </div>
     );
   }

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './Signin.css';
 import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
-import Home from './Home';
 import Signup from './Signup';
 import * as firebase from 'firebase';
 

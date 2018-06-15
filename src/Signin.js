@@ -36,6 +36,7 @@ class Signin extends Component {
 
     firebase.auth().onAuthStateChanged((user) => {
       if(user){
+        // user is logged in
         alert('Successfully Logined as ' + this.state.auth)
         this.setState({
           auth: user.email,
@@ -47,6 +48,7 @@ class Signin extends Component {
       firebase.auth().signOut()
     });
 
+    //********** Reset input value to empty *************
     this.refs.email.value = ''
     this.refs.password.value = ''
   }

@@ -40,12 +40,9 @@ class Signin extends Component {
         alert('Successfully Logined as ' + this.state.auth)
         this.setState({
           auth: user.email,
-        },() => {
-          console.log(this.state.auth)
         })
       }
-      //********* For Now Automatically SignOut **************
-      firebase.auth().signOut()
+
     });
 
     //********** Reset input value to empty *************

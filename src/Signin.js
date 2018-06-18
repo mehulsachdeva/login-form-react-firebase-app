@@ -35,7 +35,8 @@ class Signin extends Component {
     });
 
     firebase.auth().onAuthStateChanged((user) => {
-      if(user)
+      if(user){
+        // user is logged in
         alert('Successfully Logined as ' + this.state.auth)
         this.setState({
           auth: user.email,

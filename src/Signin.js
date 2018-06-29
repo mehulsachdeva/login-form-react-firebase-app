@@ -6,11 +6,11 @@ import * as firebase from 'firebase';
 
 class Signin extends Component {
 
-  //*************Intializing****************
+  //**********Intializing***********
   constructor(props){
     super(props);
     this.state = {
-      auth: ''
+      auth: '',
     }
   }
 
